@@ -1,0 +1,115 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ProductCard from '../components/ProductCard.astro';
+import '../styles/global.css';
+
+const allProducts = [
+  {
+    title: 'Dell Latitude 7420 | Core i7 11th Gen',
+    brand: 'Dell',
+    specs: ['Intel Core i7-1185G7', '16GB RAM', '512GB NVMe SSD', '14" FHD Display'],
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/e8/Dell_Latitude_7400.png',
+    stockStatus: 'In Stock (Bulk)',
+    category: 'laptops'
+  },
+  {
+    title: 'HP EliteDesk 800 G6 SFF',
+    brand: 'HP',
+    specs: ['Intel Core i5 10th Gen', '16GB DDR4', '256GB SSD', 'Win 10 Pro'],
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/HP_EliteDesk.png',
+    stockStatus: 'Available',
+    category: 'desktops'
+  },
+  {
+    title: 'Lenovo ThinkPad T14 Gen 2',
+    brand: 'Lenovo',
+    specs: ['Intel Core i5 11th Gen', '16GB RAM', '512GB SSD', '14" IPS'],
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ae/ThinkPad_T490.png',
+    stockStatus: 'Limited Stock',
+    category: 'laptops'
+  },
+  {
+    title: 'Dell UltraSharp 24" U2422H',
+    brand: 'Dell',
+    specs: ['24" IPS Panel', '1080p Resolution', 'USB-C Hub', 'Ergonomic Stand'],
+    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/a/ad/Dell_Ultrasharp.png',
+    stockStatus: 'In Stock (Bulk)',
+    category: 'lcds'
+  }
+];
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wholesale Inventory - Relinq Solutions</title>
+  </head>
+  <body class="bg-[#F8FAFC] text-[#0F172A] antialiased pt-[72px]">
+    <Header />
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-12">
+      <div class="mb-8">
+        <h1 class="text-3xl font-black text-[#1E3A8A] mb-2">Wholesale Inventory</h1>
+        <p class="text-slate-600">Browse our current premium imported IT stock. For quantities over 50+, request a custom quote.</p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-8">
+        <!-- Sidebar Filter (Static UI for Boilerplate) -->
+        <aside class="w-full md:w-64 flex-shrink-0">
+          <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-5 sticky top-24">
+            <div class="flex items-center justify-between mb-4 pb-4 border-b border-slate-100">
+              <h3 class="font-bold text-slate-900">Filters</h3>
+              <button class="text-xs text-[#1E3A8A] font-semibold">Clear All</button>
+            </div>
+            
+            <div class="space-y-6">
+              <!-- Brand Filter -->
+              <div>
+                <h4 class="text-sm font-bold text-slate-800 mb-3">Brand</h4>
+                <div class="space-y-2">
+                  {['Dell', 'HP', 'Lenovo', 'Apple'].map(b => (
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" class="rounded border-slate-300 text-[#1E3A8A] focus:ring-[#1E3A8A]" />
+                      <span class="text-sm text-slate-600">{b}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Processor Filter -->
+              <div>
+                <h4 class="text-sm font-bold text-slate-800 mb-3">Processor</h4>
+                <div class="space-y-2">
+                  {['Core i5', 'Core i7', 'Ryzen 5', 'Ryzen 7'].map(p => (
+                    <label class="flex items-center gap-2 cursor-pointer">
+                      <input type="checkbox" class="rounded border-slate-300 text-[#1E3A8A] focus:ring-[#1E3A8A]" />
+                      <span class="text-sm text-slate-600">{p}</span>
+                    </label>
+                  ))}
+                </div>
+              </div>
+              
+              <button class="w-full bg-[#1E3A8A] text-white py-2 rounded-md font-bold text-sm hover:bg-[#1E3A8A]/90 transition-colors">
+                Apply Filters
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Product Grid -->
+        <div class="flex-1">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {allProducts.map(product => (
+              <ProductCard {...product} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

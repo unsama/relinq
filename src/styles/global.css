@@ -1,1 +1,21 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  
+  --color-primary-navy: #1E3A8A; /* Navy Blue */
+  --color-primary-navy-dark: #1E3A8A; 
+  --color-secondary-slate: #64748B; /* Slate Grey */
+  --color-accent-green: #22C55E; /* Action Green */
+  --color-accent-green-hover: #16A34A;
+  
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary-navy);
+  font-family: var(--font-sans);
+}
